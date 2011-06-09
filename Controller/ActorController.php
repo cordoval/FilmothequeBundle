@@ -7,9 +7,6 @@
  * To change this template use File | Settings | File Templates.
  */
 
-
-<?php
-
 namespace Cordova\FilmothequeBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
