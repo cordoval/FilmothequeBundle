@@ -10,6 +10,15 @@ class DefaultController extends ContainerAware
 {
     public function indexAction()
     {
+        $em = $this->container->get('doctrine.orm.entity_manager');
+        $categories = $em->getRepository('CordovaFilmothequeBundle:CategoryMovie')->findAll();
+
+        return $this->container->get('templating')->renderResponse('CordovaFilmothequeBundle:Default:index.html.twig',array(
+            'categories' => $categories));
+    }
+
+/*    public function indexAction()
+    {
         $message = 'My first message';
 
         return $this->container->get('templating')
@@ -36,5 +45,5 @@ class DefaultController extends ContainerAware
             ->renderResponse('CordovaFilmothequeBundle:Default:index.html.twig',
             array('message' => $message));
     }
-
+*/
 }

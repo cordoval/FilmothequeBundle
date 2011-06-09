@@ -1,3 +1,16 @@
 homepage:
     pattern:  /
     defaults: { _controller: CordovaFilmothequeBundle:Default:index }
+
+cordova_actor_list:
+  pattern: /actor/
+  defaults: { _controller: CordovaFilmothequeBundle:Actor:list }
+cordova_actor_add:
+  pattern: /actor/add
+  defaults: { _controller: CordovaFilmothequeBundle:Actor:add }
+cordova_actor_modify:
+  pattern: /actor/modify/{id}
+  defaults: { _controller: CordovaFilmothequeBundle:Actor:modify }
+cordova_actor_delete:
+  pattern: /actor/delete/{id}
+  defaults: { _controller: CordovaFilmothequeBundle:Actor:delete }
