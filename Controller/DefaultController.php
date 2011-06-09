@@ -1,25 +1,40 @@
 <?php
 
-/*
- * This file is part of the Symfony framework.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
 namespace Cordova\FilmothequeBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Cordova\FilmothequeBundle\Entity\CategoryMovie;
 
-class DefaultController extends Controller
+class DefaultController extends ContainerAware
 {
     public function indexAction()
     {
         $message = 'My first message';
 
-        return $this->container->get( 'templating' )->renderResponse( 'CordovaFilmothequeBundle:Default:index.html.twig', array('message' => $message) );
-        //return $this->render('CordovaFilmothequeBundle:Default:index.html.twig');
+        return $this->container->get('templating')
+            ->renderResponse('CordovaFilmothequeBundle:Default:index.html.twig',
+            array('message' => $message));
     }
+
+    public function registerAction()
+    {
+        $em = $this->container->get('doctrine.orm.entity_manager');
+        $categoriea = new CategoryMovie();
+        $categoriea->setName('Comedy');
+        $em->persist($categoriea);
+
+        $categorieb = new CategoryMovie();
+        $categorieb->setName('Science-fiction');
+        $em->persist($categorieb);
+
+        $em->flush();
+
+        $message = 'Categories added successfully';
+
+        return $this->container->get('templating')
+            ->renderResponse('CordovaFilmothequeBundle:Default:index.html.twig',
+            array('message' => $message));
+    }
+
 }
