@@ -1,0 +1,11 @@
+<h1>Add an actor</h1>
+
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+
+<form action="" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="submit" />
+</form>
+<p><a href="{{ path('cordova_actor_list') }}">Return to list of actors</a></p>

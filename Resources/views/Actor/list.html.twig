@@ -1,0 +1,18 @@
+<h1>Actor's List</h1>
+
+<table>
+{% for a in actors %}
+    <tr>
+        <td>{{ a.name }}</td>
+        <td>{{ a.title }}</td>
+        <td>{{ a.dateOfBirth|date('d/m/Y') }}</td>
+        <td>{{ a.genre }}</td>
+        <td><a href="{{ path('cordova_actor_modify', { 'id': a.id }) }}">Modify</a></td>
+        <td><a href="{{ path('cordova_actor_delete', { 'id': a.id }) }}">Delete</a></td>
+    </tr>
+{% else %}
+    <tr><td>None actors found.</td></tr>
+{% endfor %}
+</table>
+
+<p><a href="{{ path('cordova_actor_add') }}">Add an actor</a><p>

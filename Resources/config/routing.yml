@@ -7,10 +7,10 @@ cordova_actor_list:
   defaults: { _controller: CordovaFilmothequeBundle:Actor:list }
 cordova_actor_add:
   pattern: /actor/add
-  defaults: { _controller: CordovaFilmothequeBundle:Actor:add }
+  defaults: { _controller: CordovaFilmothequeBundle:Actor:edit }
 cordova_actor_modify:
   pattern: /actor/modify/{id}
-  defaults: { _controller: CordovaFilmothequeBundle:Actor:modify }
+  defaults: { _controller: CordovaFilmothequeBundle:Actor:edit }
 cordova_actor_delete:
   pattern: /actor/delete/{id}
   defaults: { _controller: CordovaFilmothequeBundle:Actor:delete }
